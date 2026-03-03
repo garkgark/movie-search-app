@@ -36,7 +36,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({ movie, onClose }) => {
         : `https://via.placeholder.com/500x750/27272a/ffffff?text=No+Poster+Found`;
 
     const handleWatchClick = () => {
-        const query = encodeURIComponent(`де подивитись ${detailedMovie.title}`);
+        const query = encodeURIComponent(`where to watch ${detailedMovie.title}`);
         window.open(`https://www.google.com/search?q=${query}`, '_blank', 'noopener,noreferrer');
     };
 
@@ -86,7 +86,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({ movie, onClose }) => {
 
                         <button className="watch-button" onClick={handleWatchClick}>
                             <ExternalLink size={18} />
-                            Де можна переглянути
+                            Where to watch
                         </button>
                     </div>
                 </div>
