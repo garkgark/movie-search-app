@@ -109,14 +109,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <h1>Movie Discovery</h1>
-        <p>Find your next favorite film, filtering by year and genre.</p>
-      </header>
-
       <main>
         {viewState.type === 'search' ? (
           <>
+            <header className="app-header">
+              <h1>Movie Discovery</h1>
+              <p>Find your next favorite film, filtering by year and genre.</p>
+            </header>
             <MovieGrid
               movies={movies}
               onMovieClick={setSelectedMovie}

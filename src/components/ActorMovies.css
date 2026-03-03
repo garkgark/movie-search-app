@@ -4,24 +4,30 @@
 
 .actor-header {
     position: relative;
-    padding-top: var(--spacing-xxl);
+}
+
+.actor-header-nav {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
 }
 
 .back-button {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 16px;
     border-radius: var(--radius-full);
     font-size: 1rem;
     font-weight: 500;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .back-button:hover {

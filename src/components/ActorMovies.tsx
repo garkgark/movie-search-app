@@ -79,10 +79,12 @@ export const ActorMovies: React.FC<ActorMoviesProps> = ({ actorId, actorName, on
     return (
         <div className="actor-movies-container">
             <header className="app-header actor-header">
-                <button className="back-button" onClick={onBack}>
-                    <ArrowLeft size={24} />
-                    <span>Back to Search</span>
-                </button>
+                <div className="actor-header-nav">
+                    <button className="back-button" onClick={onBack}>
+                        <ArrowLeft size={24} />
+                        <span>Back to Search</span>
+                    </button>
+                </div>
                 <h1>Movies with {actorName}</h1>
                 <p>Discover the filmography of {actorName}</p>
             </header>
