@@ -1,0 +1,164 @@
+.filter-panel {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1000px;
+    border-radius: var(--radius-xl);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    background: rgba(30, 30, 35, 0.85);
+    /* Slightly lighter for pop */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.filter-content {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.year-section {
+    width: 100%;
+}
+
+.genre-section {
+    width: 100%;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+/* Year Slider */
+.year-slider-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.sliders {
+    position: relative;
+    flex: 1;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    pointer-events: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-primary);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: -8px;
+    /* Offset for the track */
+    transition: transform 0.1s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.slider::-moz-range-thumb {
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-primary);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background-color: var(--border-color);
+    border-radius: 2px;
+}
+
+.range-display {
+    margin-top: 24px;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.year-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.genre-wrap-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    max-height: 120px;
+    overflow-y: auto;
+    padding-right: var(--spacing-sm);
+}
+
+.genre-wrap-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.genre-wrap-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.genre-wrap-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+}
+
+.genre-pill {
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.genre-pill:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.genre-pill.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-hover);
+    color: white;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}

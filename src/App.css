@@ -1,0 +1,33 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  padding: var(--spacing-xl);
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(40, 40, 45, 0.8) 0%, transparent 100%);
+  margin-bottom: var(--spacing-lg);
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(to right, #ffffff, var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.app-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.loading-more {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--text-secondary);
+}
