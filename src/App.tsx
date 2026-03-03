@@ -4,11 +4,13 @@ import { MovieGrid } from './components/MovieGrid';
 import { FilterPanel } from './components/FilterPanel';
 import { MovieModal } from './components/MovieModal';
 import { PersonMovies } from './components/PersonMovies';
+import { HeroAnimation } from './components/HeroAnimation';
 import { fetchGenres, fetchMovies } from './api/tmdb';
 import type { Genre, Movie } from './types/tmdb';
 import './App.css';
 
 type ViewState =
+  | { type: 'hero' }
   | { type: 'search' }
   | { type: 'person'; personId: number; personName: string; role: 'actor' | 'director' };
 
@@ -25,7 +27,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-  const [viewState, setViewState] = useState<ViewState>({ type: 'search' });
+  const [viewState, setViewState] = useState<ViewState>({ type: 'hero' });
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   // Load genres on mount
@@ -107,10 +109,30 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
+  // Lock body scroll when hero is active
+  useEffect(() => {
+    if (viewState.type === 'hero') {
+      document.body.classList.add('hero-active');
+    } else {
+      document.body.classList.remove('hero-active');
+    }
+
+    return () => {
+      document.body.classList.remove('hero-active');
+    };
+  }, [viewState.type]);
+
   return (
     <div className="app-container">
+      {viewState.type === 'hero' && (
+        <HeroAnimation
+          movies={movies}
+          onInteraction={() => setViewState({ type: 'search' })}
+        />
+      )}
+
       <main>
-        {viewState.type === 'search' ? (
+        {viewState.type === 'search' || viewState.type === 'hero' ? (
           <>
             <header className="app-header">
               <h1>Movie Discovery</h1>

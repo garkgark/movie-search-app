@@ -1,0 +1,143 @@
+.hero-animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.hero-animation-container.hero-exiting {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.hero-exiting .hero-content {
+    transform: translateY(-50px) scale(0.95);
+    opacity: 0;
+}
+
+.hero-logo-placeholder h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(to right, #ffffff, var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.hero-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.hero-button:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Floating Posters */
+.floating-posters-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.floating-poster {
+    position: absolute;
+    width: 150px;
+    height: 225px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Initial state based on JS random vars */
+    transform: translate(-50%, -50%) translate(var(--float-x), var(--float-y)) scale(var(--float-scale)) rotate(var(--float-rot));
+    opacity: 0;
+    animation: fade-in-float 1s ease forwards;
+    animation-delay: var(--anim-delay);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+}
+
+@keyframes fade-in-float {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 0.4;
+        filter: blur(0);
+    }
+}
+
+.floating-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animation state when user interacts */
+.posters-snapping .floating-poster {
+    /* Instead of scattering, they pull into the center and fade out, 
+       giving the illusion they are preparing to join the grid below */
+    transform: translate(-50%, -50%) translate(0, 50vh) scale(0.2) rotate(0deg) !important;
+    opacity: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .floating-poster {
+        width: 100px;
+        height: 150px;
+    }
+}
